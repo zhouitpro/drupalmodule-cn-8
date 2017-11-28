@@ -19,10 +19,6 @@ ul, ol {
   max-width: 100%;
   margin-top: 10px;
 }
-.page-node-type-project .field.field--name-field-module-config img{
-  max-width: 820px;
-  height: auto;
-}
 
 .page-node-type-project img:hover,
 .view-id-home img:hover {
@@ -143,6 +139,10 @@ section#block-footer {
   line-height: 150%;
 }
 
+.page-node-type-project .field--name-field-module-config {
+  clear: both;
+}
+
 .page-node-type-project .field--name-field-module-discription .field--label {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
@@ -156,10 +156,8 @@ section#block-footer {
 }
 
 .page-node-type-project .block-views-blockhome-block-1 ul li {
-  height: 30px;
-  line-height: 30px;
-  width: 100%;
-  overflow-x: hidden;
+  height: 23px;
+  line-height: 23px;
 }
 
 .page-node-type-project .block-views-blockhome-block-1 .views-field-title {
@@ -216,7 +214,5 @@ section#block-footer {
 .view-display-id-block_1 ul li {
   line-height: 20px;
 }
-.page-node-type-book nav h2{
-  display: none;
-}
+
 /*# sourceMappingURL=app.css.map */
