@@ -1,0 +1,7 @@
+global-css:
+  css:
+    theme:
+      dist/css/app.css: {}
+global-js:
+  js:
+    dist/js/app.js: {}

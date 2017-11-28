@@ -1,0 +1,222 @@
+body {
+  color: #7a7a7a;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+.page-node-type-project img,
+.view-id-home img {
+  display: block;
+  padding: 4px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  transition: all 0.2s ease-in-out;
+  display: block;
+  max-width: 100%;
+  margin-top: 10px;
+}
+.page-node-type-project .field.field--name-field-module-config img{
+  max-width: 820px;
+  height: auto;
+}
+
+.page-node-type-project img:hover,
+.view-id-home img:hover {
+  border: 1px solid #0088cc;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.region.region-content {
+  background: #fff;
+  padding: 10px;
+}
+
+body {
+  background: #e8e8e8;
+}
+
+h3, .h3 {
+  font-size: 18px;
+}
+
+.directoryfixed {
+  position: fixed;
+  top: 60px;
+  width: 261px;
+}
+
+.directoryfixed .contextual-region {
+  position: relative;
+}
+
+section#block-footer {
+  padding: 10px;
+}
+
+.block {
+  min-height: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.well.region.region-sidebar-second {
+  background-color: #e8e8e8;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.view-id-home {
+  line-height: 150%;
+}
+
+.view-id-home .views-field.views-field-field-module-discription {
+  background: none repeat scroll 0 0 #FDFDFD;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 2px 6px #EFEFEF inset;
+  margin: 0 0 40px;
+  overflow: hidden;
+  padding: 20px;
+  clear: both;
+}
+
+.view-id-home .views-field.views-field-field-module-discription img.img-responsive {
+  float: right;
+  padding: 10px;
+}
+
+.view-id-home .views-field-title {
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 40px;
+  height: 40px;
+}
+
+.view-id-home .views-field-field-module-category ul {
+  padding: 15px 0;
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+}
+
+.view-id-home .views-field-field-module-category ul li {
+  float: left;
+  padding-left: 15px;
+}
+
+.view-id-home .views-field-field-module-category ul li a {
+  padding: 7px 15px;
+  text-shadow: 0 1px 1px #003547;
+  font-weight: bold;
+  border: none;
+  font-family: "Lucida Grande","Lucida Sans Unicode",Segoe UI,Helvetica,Arial,sans-serif;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0px 1px 2px #939da2;
+  margin-right: 10px;
+  color: #fefefe;
+  text-shadow: 0 1px 1px #003547;
+  background: #0093c5;
+  background-image: linear-gradient(top, #0093c5 0%, #0079a2 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0093c5', endColorstr='#0079a2');
+  box-shadow: 0px 1px 2px #939da2;
+}
+
+.view-id-home .views-field-field-module-category ul li a:hover {
+  text-decoration: none;
+}
+
+.page-node-type-project {
+  line-height: 150%;
+}
+
+.page-node-type-project .field--name-field-module-discription .field--label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #317eac;
+  font-size: 20px;
+}
+
+.page-node-type-project .block-views-blockhome-block-1 ul {
+  padding: 0 15px;
+}
+
+.page-node-type-project .block-views-blockhome-block-1 ul li {
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.page-node-type-project .block-views-blockhome-block-1 .views-field-title {
+  font-weight: normal;
+}
+
+.page-node-type-project .block-views-blockhome-block-1 .views-field-title a {
+  font-size: 14px;
+}
+
+.page-node-type-project .field.field--name-field-module-image {
+  width: 230px;
+  float: right;
+}
+
+#block-rightmenu {
+  line-height: 200%;
+}
+
+#block-rightmenu h3 {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+#block-rightmenu ul li ol {
+  list-style: decimal;
+}
+
+.view-id-terms.view-display-id-page_1 .views-field-name {
+  float: left;
+}
+
+.view-id-terms.view-display-id-page_1 .views-field-id {
+  float: left;
+  padding-left: 3px;
+}
+
+.view-id-terms.view-display-id-page_1 .views-row {
+  padding-left: 10px;
+  line-height: 30px;
+  float: left;
+}
+
+#block-wechat {
+  padding-bottom: 20px;
+}
+
+#block-module-download {
+  margin-top: 20px;
+}
+
+.view-display-id-block_1 ul li {
+  line-height: 20px;
+}
+.page-node-type-book nav h2{
+  display: none;
+}
+/*# sourceMappingURL=app.css.map */

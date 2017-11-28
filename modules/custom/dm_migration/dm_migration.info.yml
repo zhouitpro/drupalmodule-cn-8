@@ -1,0 +1,7 @@
+name: Module Migration
+description: Module Migration.
+type: module
+core: 8.x
+package: DM
+dependencies:
+  - system (>=8.1.0)

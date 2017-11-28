@@ -1,0 +1,8 @@
+dm_api.get_download:
+  path: '/api/get_download/{node}'
+  defaults:
+    _controller: '\Drupal\dm_project\Controller\DmApiController::get_download'
+    _title: 'Get download'
+  methods:  [GET]
+  requirements:
+    _permission: 'access content'

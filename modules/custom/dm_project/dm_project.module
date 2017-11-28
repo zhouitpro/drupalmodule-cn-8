@@ -1,0 +1,168 @@
+<?php
+
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\node\NodeInterface;
+use Drupal\views\ViewExecutable;
+use Drupal\dm_project\ProjectHelper;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+
+define('DM_PROJECT_CORE_MODULE_TID', 11);
+
+/**
+ * @param \Drupal\views\ViewExecutable                     $view
+ * @param \Drupal\views\Plugin\views\query\QueryPluginBase $query
+ */
+function dm_project_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+
+  if($view->id() == 'home' && $view->current_display == 'home_page') {
+    if (!empty($view->exposed_raw_input['keyword'])) {
+      $search_title = trim($view->exposed_raw_input['keyword']);
+      // Traverse through the 'where' part of the query.
+      $conditions = &$query->where[2]['conditions'];
+      if($search_title) {
+        foreach ($conditions as &$condition) {
+          $condition['field'] = $condition['field'];
+          $condition['value'] = "%{$search_title}%";
+        }
+      }
+
+      // 搜索的字段.
+      $title_field = 'node_field_data.title';
+      $description_field = 'node__field_module_discription.field_module_discription_value';
+      $config_field = 'node__field_module_config.field_module_config_value';
+      $short_name_field = 'node__field_module_short_name.field_module_short_name_value';
+
+      // 对Views. 搜索结果进行排序.
+      $string = "CASE
+          WHEN {$title_field}='{$search_title}' THEN 1
+          WHEN {$short_name_field}='{$search_title}' THEN 2
+          WHEN {$title_field} LIKE '%{$search_title}%' THEN 4
+          WHEN {$short_name_field} LIKE '%{$search_title}%' THEN 5
+          WHEN {$description_field} LIKE '%{$search_title}%' THEN 6
+          WHEN {$config_field} LIKE '%{$search_title}%' THEN 7
+          END";
+
+      $query->addField(NULL, $string, 'sortfield');
+
+      // 模糊匹配查询功能.
+      // @see https://api.drupal.org/api/drupal/core%21modules%21views%21src%21Plugin%21views%21query%21Sql.php/function/Sql%3A%3AaddWhereExpression/8.2.x.
+      $query->addWhereExpression(2, "MATCH($title_field) AGAINST('{$search_title}' IN BOOLEAN MODE)");
+
+      array_unshift($query->orderby, array(
+        'field' => "sortfield",
+        'direction' => 'ASC'
+      ));
+    } else {
+      unset($query->where[2]);
+    }
+  }
+  if($view->id() == 'home' && $view->current_display == 'block_1') {
+    $node = \Drupal::routeMatch()->getParameter('node');
+
+    $category = [];
+    foreach($node->get('field_module_category')->getValue() as $node_category) {
+      $category[] = $node_category['target_id'];
+    }
+    if ($node instanceof NodeInterface) {
+      $condition_wheres = &$query->where;
+      foreach($condition_wheres as &$condition_where) {
+        foreach($condition_where['conditions'] as &$condition) {
+          if($condition['field'] == 'node_field_data.nid') {
+            $condition['value'] = $node->id();
+          }
+
+          if($condition['field'] == 'node__field_module_category.field_module_category_target_id IN(:node__field_module_category_field_module_category_target_id[])') {
+            $condition['value'] = array(':node__field_module_category_field_module_category_target_id[]' => $category);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param                                      $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function dm_project_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if($form_id == 'node_project_form' OR $form_id == 'node_project_edit_form') {
+    $form['#validate'][] = 'dm_project_validate_project';
+  }
+}
+
+/**
+ * Validate form.
+ *
+ * @param                                      $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function dm_project_validate_project(&$form, FormStateInterface $form_state) {
+
+  $version = $form_state->getValue('field_module_version');
+  $module = $form_state->getValue('field_module_short_name');
+  $release_info = ProjectHelper::LoadRelease($module[0]['value'], $version[0]['value']);
+
+  $category = $form_state->getValue('field_module_category');
+  if(!$release_info && !ProjectHelper::IsCoreModuleByCategory($category)) {
+    $form_state->setErrorByName('field_module_short_name', t('the module not exisits!'));
+  }
+}
+
+/**
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ */
+function dm_project_entity_presave(EntityInterface $entity) {
+
+  // 当模块保存的时候设置默认值.
+  if($entity->getEntityType()->id() == 'node' && $entity->getType() == 'project') {
+
+    $version = $entity->get('field_module_version')->value;
+    $module_name = $entity->get('field_module_short_name')->value;
+    $release_info = ProjectHelper::LoadRelease($module_name, $version);
+    $allowed_versions = $entity->getFieldDefinition('field_module_version')->getFieldStorageDefinition()->getSetting('allowed_values');
+
+    if(!ProjectHelper::IsCoreModule($entity) && $release_info) {
+      $entity->set('title', $allowed_versions[$version] .' '. $release_info['title']);
+      $entity->set('field_module_page', 'https://www.drupal.org/project/' . $module_name);
+    } elseif(ProjectHelper::IsCoreModule($entity)) {
+      $x = substr($version, 0, 1);
+      // https://www.drupal.org/docs/8/core/modules/tracker
+      $entity->set('field_module_page', "https://www.drupal.org/docs/{$x}/core/modules/" . $module_name);
+      $entity->set('title', $allowed_versions[$version] . ' ' . ucfirst($module_name));
+    } else {
+      drupal_set_message(t('the module not exisits!'), 'error');
+    }
+
+    // add id to config field.
+    $config_content = ProjectHelper::AddIdToH2H3Tags($entity->get('field_module_config')->value,$entity);
+    $entity->set('field_module_config', array(
+      'value' => $config_content,
+      'format' => 'full_html')
+    );
+    // add h2,h3 id.
+
+  }
+}
+
+/**
+ * @param array                                                  $build
+ * @param \Drupal\Core\Entity\EntityInterface                    $entity
+ * @param \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display
+ * @param                                                        $view_mode
+ */
+function dm_project_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if($build['#entity_type'] == 'node' && $build['#node']->getType() == 'project') {
+    $build['#attached']['drupalSettings']['dm_project'] = array(
+      'is_core_module' => ProjectHelper::IsCoreModule($entity),
+      'project_id' => $entity->id(),
+      'module_name' => $entity->get('field_module_short_name')->value,
+      'version' => $entity->get('field_module_version')->value
+    );
+  }
+}
+

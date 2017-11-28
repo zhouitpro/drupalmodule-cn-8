@@ -1,0 +1,194 @@
+<?php
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * @file
+ * Provides news customization.
+ */
+function dm_migration_update_project_list() {
+  $EntityStorage = \Drupal::entityTypeManager()->getStorage('project_list');
+  $path = '/Users/xiukun/www/dmcn8/modules/custom/dm_project/projectlist.xml';
+  $xml = simplexml_load_file($path);
+  $projects = $xml->xpath('project');
+
+
+
+}
+
+function create_project_list($projects) {
+  foreach($projects as $short_name => $title) {
+    $EntityStorage = \Drupal::entityTypeManager()->getStorage('project_list');
+    $entityQuery = \Drupal::entityQuery('project_list')
+      ->condition('field_short_name', $short_name)->execute();
+
+    if ($entityQuery) {
+      $Entity = $EntityStorage->load(reset($entityQuery));
+    } else {
+      $Entity = $EntityStorage->create(array('type' => 'project_list'));
+    }
+
+    $Entity->title = $title;
+    $Entity->field_short_name = $short_name;
+
+    $Entity->save();
+  }
+}
+
+function dm_migrate_update_project_list_by_csv() {
+  $row = 1;
+  $file = '/Users/xiukun/www/drupal/modules/custom/dm_migration/releases.tsv';
+
+  $projects = [];
+  if (($handle = fopen($file, "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {
+      if ($row == 1) {
+        $row++;
+        continue;
+      }
+      else {
+        $row++;
+      }
+
+      $machine_name = $data[1];
+      $title = $data[4];
+
+      $projects[$machine_name] = $title;
+    }
+
+    fclose($handle);
+  }
+  create_project_list($projects);
+//  dpm($row);
+}
+
+/**
+ * Update categorys and tags.
+ */
+function dm_migration_update_categorys() {
+  foreach(['module_category', 'module_tag'] as $type) {
+    $datas = include_once "data/$type.php";
+    foreach($datas as $oid => $name) {
+      Term::create(array(
+        'name' => $name,
+        'vid' => $type,
+        'field_oid' => $oid,
+      ))->save();
+    }
+  }
+}
+
+/**
+ * 迁移内容.
+ */
+function dm_migration_update_contents() {
+  $contents = json_decode(file_get_contents('/Users/xiukun/www/drupal/modules/custom/dm_migration/modules.json'), TRUE);
+
+  $versions = array(
+    '6.x' => 'Drupal 6',
+    '7.x' => 'Drupal 7',
+    '8.x' => 'Drupal 8',
+  );
+  $nos = [];
+  foreach($contents as $content) {
+
+    if(empty($content['field_module_name'])) {
+      continue;
+    }
+
+    // 检查是否存在.
+    $EntityQueryGetId = \Drupal::entityQuery('project_list')
+      ->condition('field_short_name', $content['field_module_name'])->execute();
+
+    if(!$EntityQueryGetId) {
+      $nos[] = $content['field_module_name'];
+    }
+
+    $ProjectEntityStorage = \Drupal::entityTypeManager()->getStorage('project_list');
+    $ProjectEntity = $ProjectEntityStorage->load(reset($EntityQueryGetId));
+
+    // 检查module是否存在.
+    $entityQuery =     // 检查是否存在.
+    $entityQuery = \Drupal::entityQuery('node')
+      ->condition('type','project')
+      ->condition('field_module_version', $content['field_module_version'])
+      ->condition('field_module_short_name', $content['field_module_name'])->execute();
+
+    $EntityStorage = \Drupal::entityTypeManager()->getStorage('node');
+
+    if ($entityQuery) {
+      continue;
+      $Entity = $EntityStorage->load(reset($entityQuery));
+
+    } else {
+      $Entity = $EntityStorage->create(array('type' => 'project'));
+    }
+
+    $content['title'] = $versions[$content['field_module_version']] .' '. $ProjectEntity->title->value;
+    $content['field_module_short_name'] = $content['field_module_name'];
+    $content['field_module_page'] = 'https://www.drupal.org/project/' . $content['field_module_name'];
+    // set field.
+    foreach($content as $field => $fvalue) {
+      if($c = filter_content($field, $fvalue)) {
+        $Entity->{$field} = $c;
+      }
+    }
+    $Entity->save();
+  }
+}
+
+function get_terms_all($type) {
+  $TermManager = \Drupal::entityManager()->getStorage('taxonomy_term');
+  $returns = [];
+  foreach($TermManager->loadTree($type) as $term) {
+    $t = $TermManager->load($term->tid);;
+    $returns[$t->field_oid->value] = $term->tid;
+  }
+  return $returns;
+}
+
+function filter_content($field, $content) {
+
+  static $categorys;
+  if(!isset($categorys)) {
+    $categorys = get_terms_all('module_category');
+  }
+
+  if ($field == 'field_module_category') {
+    $newcontent = [];
+    foreach($content as $oid) {
+      if (isset($categorys[$oid['tid']])) {
+        $newcontent[] = $categorys[$oid['tid']];
+      }
+    }
+    return $newcontent;
+  }
+
+  if($field == 'field_module_image') {
+    foreach($content as $img) {
+      $uri  = file_unmanaged_copy($img, 'public://' . basename($img), FILE_EXISTS_REPLACE);
+      $file = \Drupal\file\Entity\File::Create([
+        'uri' => $uri,
+      ]);
+      $file->save();
+    }
+    return $file->id();
+  }
+
+  if($field == 'field_module_name') {
+    $entityQuery = \Drupal::entityQuery('project_list')
+      ->condition('field_short_name', $content)->execute();
+    if($entityQuery) {
+      return reset($entityQuery);
+    }
+    return null;
+  }
+
+  if($field == 'field_module_discription' OR $field == 'field_module_config') {
+    return array(
+      'value' => $content,
+      'format' => 'full_html'
+    );
+  }
+
+  return $content;
+}
