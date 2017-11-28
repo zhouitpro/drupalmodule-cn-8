@@ -1,0 +1,22 @@
+uuid: 36d6194b-96d4-4fc7-899e-c7805864bbd2
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - node
+id: wiki
+label: wiki
+type: 'canonical_entities:node'
+pattern: '新手指南/[node:title].html'
+selection_criteria:
+  1e80c838-e7f4-419d-bc3d-1e93341d6625:
+    id: node_type
+    bundles:
+      book: book
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 1e80c838-e7f4-419d-bc3d-1e93341d6625
+selection_logic: and
+weight: -5
+relationships: {  }

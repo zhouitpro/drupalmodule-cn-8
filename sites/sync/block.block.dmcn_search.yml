@@ -1,0 +1,22 @@
+uuid: 8c6ee887-ee1e-4c71-8d52-a2d13ccbbbfb
+langcode: zh-hans
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - dmcn
+_core:
+  default_config_hash: F3d5hyAFunLh4PhGviJF019fHn1Z3_zy5gzsQ0tX1K0
+id: dmcn_search
+theme: dmcn
+region: sidebar_second
+weight: -6
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

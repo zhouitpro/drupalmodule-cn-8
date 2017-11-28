@@ -1,0 +1,22 @@
+uuid: 77a14bb9-f6b7-438a-b4ac-c46265297eec
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dmcn
+_core:
+  default_config_hash: fNNLN48MSGSLiqwIFywCuxH2Dk_IxDbaP0kYhg_IPrg
+id: dmcn_content
+theme: dmcn
+region: content
+weight: -8
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

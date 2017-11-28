@@ -1,0 +1,19 @@
+uuid: 1b24e85d-1a4e-4e46-bb2f-8bb8c4eab569
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_oid
+    - taxonomy.vocabulary.module_category
+id: taxonomy_term.module_category.field_oid
+field_name: field_oid
+entity_type: taxonomy_term
+bundle: module_category
+label: oid
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

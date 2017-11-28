@@ -1,0 +1,33 @@
+uuid: fe871e05-ea54-465d-b530-cd4c2b73fdbb
+langcode: zh-hans
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:12f751f4-78ad-4087-8aa0-dccdf0bf2224'
+  module:
+    - block_content
+    - ctools
+  theme:
+    - dmcn
+id: module_download
+theme: dmcn
+region: content
+weight: -7
+provider: null
+plugin: 'block_content:12f751f4-78ad-4087-8aa0-dccdf0bf2224'
+settings:
+  id: 'block_content:12f751f4-78ad-4087-8aa0-dccdf0bf2224'
+  label: 模块下载
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      project: project
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

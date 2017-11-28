@@ -1,0 +1,12 @@
+uuid: bef669c6-3a38-49f7-9e80-5f85c7f7e57e
+langcode: zh-hans
+status: false
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: mQIF_foYjmnVSr9MpcD4CTaJE_FpO1AyDd_DskztGhM
+id: user.full
+label: 用户帐户
+targetEntityType: user
+cache: true

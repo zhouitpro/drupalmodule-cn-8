@@ -1,0 +1,22 @@
+uuid: bedea2a4-c929-4efa-aa46-a60057816980
+langcode: zh-hans
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - dmcn
+_core:
+  default_config_hash: iggZSiUKz4mYP1YPJ8SsUfFu79HIgOTt6IDy3Up59aM
+id: dmcn_powered
+theme: dmcn
+region: footer
+weight: -8
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

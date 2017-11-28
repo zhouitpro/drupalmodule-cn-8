@@ -1,0 +1,100 @@
+uuid: 30b33d95-a56e-4371-a5ff-843b177a27c1
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.field.node.project.body
+    - field.field.node.project.field_module_category
+    - field.field.node.project.field_module_config
+    - field.field.node.project.field_module_discription
+    - field.field.node.project.field_module_file
+    - field.field.node.project.field_module_image
+    - field.field.node.project.field_module_name
+    - field.field.node.project.field_module_page
+    - field.field.node.project.field_module_short_name
+    - field.field.node.project.field_module_version
+    - image.style.thumbnail
+    - node.type.project
+  module:
+    - file
+    - image
+    - link
+    - text
+id: node.project.default
+targetEntityType: node
+bundle: project
+mode: default
+content:
+  field_module_category:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_module_config:
+    weight: 7
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_module_discription:
+    weight: 6
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_module_file:
+    weight: 5
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
+  field_module_image:
+    weight: 3
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_module_page:
+    weight: 26
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_module_short_name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_module_version:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  body: true
+  created: true
+  field_module_name: true
+  langcode: true
+  path: true
+  promote: true
+  status: true
+  sticky: true
+  title: true
+  uid: true

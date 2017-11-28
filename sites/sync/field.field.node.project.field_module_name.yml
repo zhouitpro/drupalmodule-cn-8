@@ -1,0 +1,29 @@
+uuid: 1a39ab1c-3798-48be-841b-b16422f84a16
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - eck.eck_type.project_list.project_list
+    - field.storage.node.field_module_name
+    - node.type.project
+id: node.project.field_module_name
+field_name: field_module_name
+entity_type: node
+bundle: project
+label: 模块名
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:project_list'
+  handler_settings:
+    target_bundles:
+      project_list: project_list
+    sort:
+      field: field_short_name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

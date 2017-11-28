@@ -1,0 +1,21 @@
+uuid: 70275dd6-b1cd-44eb-b3d3-1467808c8812
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - eck
+id: project_list.field_short_name
+field_name: field_short_name
+entity_type: project_list
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

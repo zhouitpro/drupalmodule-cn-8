@@ -1,0 +1,9 @@
+uuid: d9ed3126-3d25-4f69-aec3-d7cc6482f3e6
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.project_list
+name: 'Project List'
+type: project_list
+description: ''

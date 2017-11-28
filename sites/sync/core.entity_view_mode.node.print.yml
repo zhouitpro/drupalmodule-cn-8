@@ -1,0 +1,15 @@
+uuid: 8f8ea34e-b5a0-4778-b5a0-33af194f5e75
+langcode: zh-hans
+status: false
+dependencies:
+  enforced:
+    module:
+      - book
+  module:
+    - node
+_core:
+  default_config_hash: ERjobPGdPFAM9p5cmQIcJzk-0cY-1mE1OV_pKmMlJaE
+id: node.print
+label: Print
+targetEntityType: node
+cache: true

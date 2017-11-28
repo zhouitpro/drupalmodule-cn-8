@@ -1,0 +1,22 @@
+uuid: 86ded132-7ac0-44a4-bb5a-7a0bfd41160e
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - seven
+_core:
+  default_config_hash: IItlF4SKHgxduIysVQdvirDJ_v3HGuAviOkidAOJYRE
+id: seven_login
+theme: seven
+region: content
+weight: 10
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 用户登录
+  provider: user
+  label_display: visible
+visibility: {  }

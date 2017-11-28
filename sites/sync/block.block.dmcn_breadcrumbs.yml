@@ -1,0 +1,22 @@
+uuid: e5ad9fe4-062e-4435-bd15-3c8f8050ef06
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dmcn
+_core:
+  default_config_hash: wDR9JKEATSWldBjw8du8s3G2zjEYeQf88nlld11hMLo
+id: dmcn_breadcrumbs
+theme: dmcn
+region: header
+weight: -7
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

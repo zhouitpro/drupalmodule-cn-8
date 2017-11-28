@@ -1,0 +1,13 @@
+uuid: ff680f6d-4609-4a41-ad97-f365b8a02b8d
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: TSkg_gUZvk-39yXFrIFnKjsxuEzO0qBH82TdDxOMMr4
+id: comment_save_action
+label: 保存评论
+type: comment
+plugin: comment_save_action
+configuration: {  }

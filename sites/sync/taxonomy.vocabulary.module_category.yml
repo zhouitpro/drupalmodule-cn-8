@@ -1,0 +1,9 @@
+uuid: 3f2d0c60-fe81-499f-8e4f-42dbc1da773c
+langcode: zh-hans
+status: true
+dependencies: {  }
+name: 模块分类
+vid: module_category
+description: ''
+hierarchy: 0
+weight: 0

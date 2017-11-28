@@ -1,0 +1,20 @@
+uuid: 42989bd3-81cb-450e-bf19-a0c32cc2d110
+langcode: zh-hans
+status: true
+dependencies:
+  theme:
+    - dmcn
+_core:
+  default_config_hash: ffxthelqQF8xcr4GTG4HlaNNsluiHftN0pujmQpW0bQ
+id: dmcn_local_actions
+theme: dmcn
+region: header
+weight: -7
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

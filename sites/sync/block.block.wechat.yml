@@ -1,0 +1,25 @@
+uuid: 0cdb5949-c986-42bc-902b-df5a7d092072
+langcode: zh-hans
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:27e6987c-fdbc-44e7-a120-1b788b7a047e'
+  module:
+    - block_content
+  theme:
+    - dmcn
+id: wechat
+theme: dmcn
+region: sidebar_second
+weight: -9
+provider: null
+plugin: 'block_content:27e6987c-fdbc-44e7-a120-1b788b7a047e'
+settings:
+  id: 'block_content:27e6987c-fdbc-44e7-a120-1b788b7a047e'
+  label: 关注订阅号
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

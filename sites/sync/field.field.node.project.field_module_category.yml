@@ -1,0 +1,29 @@
+uuid: 02c59df9-782d-47db-bf4d-778dcc26ff16
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_module_category
+    - node.type.project
+    - taxonomy.vocabulary.module_category
+id: node.project.field_module_category
+field_name: field_module_category
+entity_type: node
+bundle: project
+label: "\b模块分类"
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      module_category: module_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 57cb1890-2261-48dc-859b-498963c13f60
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_module_config
+    - node.type.project
+  module:
+    - text
+id: node.project.field_module_config
+field_name: field_module_config
+entity_type: node
+bundle: project
+label: 详细配置
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

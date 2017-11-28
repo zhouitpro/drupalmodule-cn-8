@@ -1,0 +1,23 @@
+uuid: 8df51be1-0fe0-43a3-87a8-061f7d2e7b2d
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_module_version
+    - node.type.project
+  module:
+    - options
+id: node.project.field_module_version
+field_name: field_module_version
+entity_type: node
+bundle: project
+label: 版本号
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 7.x
+default_value_callback: ''
+settings: {  }
+field_type: list_string

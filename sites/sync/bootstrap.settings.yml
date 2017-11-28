@@ -1,0 +1,27 @@
+schemas:
+  bootstrap: 8000
+_core:
+  default_config_hash: 1uFogeFphl0Hg6oVCacZZ8mM_0wMZ7PS_RrmLbK5tf0
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: 'http://drupal.dev/themes/bootstrap/favicon.ico'
+  use_default: true
+cdn_jsdelivr_theme: cerulean
+table_responsive: '-1'
+table: ''
+logo:
+  path: ''
+  url: ''
+  use_default: false
+cdn_provider: jsdelivr
+cdn_custom_css: 'http://apps.bdimg.com/libs/bootstrap/3.3.7/js/bootstrap.min.js'
+cdn_custom_css_min: 'http://apps.bdimg.com/libs/todc-bootstrap/3.1.1-3.2.1/todc-bootstrap.min.css'
+cdn_custom_js: 'http://apps.bdimg.com/libs/bootstrap/3.3.7/js/bootstrap.min.js'
+cdn_custom_js_min: 'http://apps.bdimg.com/libs/todc-bootstrap/3.1.1-3.2.1/todc-bootstrap.min.css'
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: true
+langcode: zh-hans

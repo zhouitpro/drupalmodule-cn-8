@@ -1,0 +1,25 @@
+uuid: 0bc60d12-9555-45ed-a49e-4edcdb7d5007
+langcode: zh-hans
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:f61b8300-25b8-4fe9-a0bd-76d5eb3d2bb6'
+  module:
+    - block_content
+  theme:
+    - dmcn
+id: footer
+theme: dmcn
+region: footer
+weight: -9
+provider: null
+plugin: 'block_content:f61b8300-25b8-4fe9-a0bd-76d5eb3d2bb6'
+settings:
+  id: 'block_content:f61b8300-25b8-4fe9-a0bd-76d5eb3d2bb6'
+  label: Footer
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

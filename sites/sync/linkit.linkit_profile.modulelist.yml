@@ -1,0 +1,21 @@
+uuid: cce5ccdb-7e6e-4337-af87-6d0545fa1b23
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - node
+id: modulelist
+label: ModuleList
+description: ''
+attributes: {  }
+matchers:
+  36522b58-d5b2-446e-ac3b-822385cfd07b:
+    uuid: 36522b58-d5b2-446e-ac3b-822385cfd07b
+    id: 'entity:node'
+    weight: 0
+    settings:
+      result_description: 模块
+      bundles:
+        project: project
+      group_by_bundle: false
+      include_unpublished: false

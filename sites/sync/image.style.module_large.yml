@@ -1,0 +1,15 @@
+uuid: 43f28ea8-8a61-4cfe-9229-f8a9cd441f68
+langcode: zh-hans
+status: true
+dependencies: {  }
+name: module_large
+label: 'Module Large'
+effects:
+  fb7732a1-9dad-487b-8abc-22477f15c94d:
+    uuid: fb7732a1-9dad-487b-8abc-22477f15c94d
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: false

@@ -1,0 +1,28 @@
+uuid: ec633642-031a-46b2-afe6-9b1d07d1ab94
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - ctools
+    - dm_project
+  theme:
+    - dmcn
+id: rightmenu
+theme: dmcn
+region: sidebar_second
+weight: -7
+provider: null
+plugin: project_right_menu
+settings:
+  id: project_right_menu
+  label: 内容目录
+  provider: dm_project
+  label_display: visible
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      project: project
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

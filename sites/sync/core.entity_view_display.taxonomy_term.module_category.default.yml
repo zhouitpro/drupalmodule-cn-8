@@ -1,0 +1,31 @@
+uuid: 5766083d-1e24-47d7-994b-e045ef80901b
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.module_category.field_oid
+    - taxonomy.vocabulary.module_category
+  module:
+    - text
+id: taxonomy_term.module_category.default
+targetEntityType: taxonomy_term
+bundle: module_category
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_oid:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true

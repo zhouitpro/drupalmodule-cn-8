@@ -1,0 +1,11 @@
+uuid: 8490a38a-be8c-46b9-ab49-832ae70b5dd3
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - node.type.article
+id: node.article
+target_entity_type_id: node
+target_bundle: article
+default_langcode: site_default
+language_alterable: false

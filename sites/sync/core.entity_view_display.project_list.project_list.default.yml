@@ -1,0 +1,30 @@
+uuid: 51eb3a3d-eea7-488b-84b2-12ad31412c66
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - eck.eck_type.project_list.project_list
+    - field.field.project_list.project_list.field_short_name
+id: project_list.project_list.default
+targetEntityType: project_list
+bundle: project_list
+mode: default
+content:
+  field_short_name:
+    weight: -4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  title:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  langcode: true

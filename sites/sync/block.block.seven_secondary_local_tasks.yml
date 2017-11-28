@@ -1,0 +1,22 @@
+uuid: 4b052bf8-5339-49ba-9182-a2e10559d866
+langcode: zh-hans
+status: true
+dependencies:
+  theme:
+    - seven
+_core:
+  default_config_hash: QeZBeCilQfeET3GeW6ZtJkEiwROADTZktFgKWwPieD4
+id: seven_secondary_local_tasks
+theme: seven
+region: pre_content
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 次标签
+  provider: core
+  label_display: '0'
+  primary: false
+  secondary: true
+visibility: {  }

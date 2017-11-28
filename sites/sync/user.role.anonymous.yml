@@ -1,0 +1,17 @@
+uuid: fad5311c-74fb-4736-8461-1079ff4f0d39
+langcode: zh-hans
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access site-wide contact form'
+  - 'search content'
+  - 'use text format full_html'
+  - 'use text format restricted_html'

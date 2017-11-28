@@ -1,0 +1,17 @@
+uuid: a5c9a741-809e-48fd-bb2e-ec04541b2cf1
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 模块
+type: project
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

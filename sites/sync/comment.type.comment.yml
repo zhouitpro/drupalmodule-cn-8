@@ -1,0 +1,10 @@
+uuid: a2c462a1-380d-4584-9c98-ef7d25d5aa7c
+langcode: zh-hans
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: bqZsN31T2n0UjcbyCpOPi9D2iO0sAOHR7FnEs9qMvaA
+id: comment
+label: 'Default comments'
+target_entity_type_id: node
+description: 'Allows commenting on content'

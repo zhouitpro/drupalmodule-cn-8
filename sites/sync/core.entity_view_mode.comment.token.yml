@@ -1,0 +1,10 @@
+uuid: fe3826e2-473b-403c-af3b-e0dc55099938
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - comment
+id: comment.token
+label: Token
+targetEntityType: comment
+cache: true

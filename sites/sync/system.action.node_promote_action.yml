@@ -1,0 +1,13 @@
+uuid: b0fc3860-eef2-42c6-a009-6a327e57fb1e
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: N0RDBTqiK4dKoN4p4oW2j0SGWycdHyALUe9M-Ofp89U
+id: node_promote_action
+label: 'Promote content to front page'
+type: node
+plugin: node_promote_action
+configuration: {  }

@@ -1,0 +1,22 @@
+uuid: 4c67e706-ff26-4859-934c-e214e67c0588
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - node
+id: project
+label: Project
+type: 'canonical_entities:node'
+pattern: 'project/[node:field_module_short_name:value]/[node:field_module_version:value]'
+selection_criteria:
+  5370941e-8a8b-4129-841f-0a526148cca5:
+    id: node_type
+    bundles:
+      project: project
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 5370941e-8a8b-4129-841f-0a526148cca5
+selection_logic: and
+weight: -5
+relationships: {  }

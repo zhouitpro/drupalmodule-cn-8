@@ -1,0 +1,20 @@
+uuid: c7af7835-6be5-45b4-80ed-49a3822a90b0
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - eck
+    - node
+id: node.field_module_name
+field_name: field_module_name
+entity_type: node
+type: entity_reference
+settings:
+  target_type: project_list
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

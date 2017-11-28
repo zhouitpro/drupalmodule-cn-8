@@ -1,0 +1,20 @@
+uuid: 1e1a1c5a-55c0-4e0a-9218-c4f66060065b
+langcode: zh-hans
+status: true
+dependencies:
+  theme:
+    - dmcn
+_core:
+  default_config_hash: 1TQP4b3ZnlzvIH9bj6cpCz_SyUHdJjLQkZnHpikjjhw
+id: dmcn_page_title
+theme: dmcn
+region: header
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

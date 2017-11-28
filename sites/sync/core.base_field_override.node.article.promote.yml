@@ -1,0 +1,22 @@
+uuid: c2a565ea-586c-4b41-8d99-e4f8b7163efc
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - node.type.article
+id: node.article.promote
+field_name: promote
+entity_type: node
+bundle: article
+label: 推荐到首页
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 开启
+  off_label: 关闭
+field_type: boolean

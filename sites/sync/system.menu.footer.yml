@@ -1,0 +1,10 @@
+uuid: a8e4944e-3114-43c7-8bb4-ed943fc8f5ac
+langcode: zh-hans
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 7yrlW5z9zdg2eBucB2GPqXKSMQfH9lSRSO4DbWF7AFc
+id: footer
+label: 页脚
+description: 'Site information links'
+locked: true

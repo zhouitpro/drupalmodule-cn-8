@@ -1,0 +1,11 @@
+uuid: 66593413-3f2d-43d3-8adf-99f3a3358d15
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.module_category
+id: taxonomy_term.module_category
+target_entity_type_id: taxonomy_term
+target_bundle: module_category
+default_langcode: site_default
+language_alterable: false

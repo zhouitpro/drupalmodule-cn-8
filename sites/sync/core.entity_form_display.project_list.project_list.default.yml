@@ -1,0 +1,36 @@
+uuid: 976c1117-40a6-4ee6-a431-bef33599d82d
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - eck.eck_type.project_list.project_list
+    - field.field.project_list.project_list.field_short_name
+id: project_list.project_list.default
+targetEntityType: project_list
+bundle: project_list
+mode: default
+content:
+  field_short_name:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }
