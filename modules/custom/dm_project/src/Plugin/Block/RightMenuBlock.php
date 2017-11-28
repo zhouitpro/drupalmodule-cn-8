@@ -4,6 +4,7 @@ namespace Drupal\dm_project\Plugin\Block;
 
 use Drupal\Core\Url;
 use Drupal\Core\Link;
+use Drupal\dm_project\ProjectHelper;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Block\BlockBase;
 
@@ -96,9 +97,11 @@ class RightMenuBlock extends BlockBase {
         }
       }
 
-      $anchor_link_has[] = Link::fromTextAndUrl($this->t('module download'), Url::fromRoute('<current>', array(), array(
-        'fragment' => 'block-module-download',
-      )));
+      if(!ProjectHelper::IsCoreModule($node)) {
+        $anchor_link_has[] = Link::fromTextAndUrl($this->t('module download'), Url::fromRoute('<current>', array(), array(
+          'fragment' => 'block-module-download',
+        )));
+      }
 
       foreach ($anchor_link_has as $key => $anchor_link_has_item) {
         if (is_array($anchor_link_has_item) && empty($anchor_link_has_item['#items'])) {
