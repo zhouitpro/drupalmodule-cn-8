@@ -1,17 +1,39 @@
 <?php
 
-
-use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\node\NodeInterface;
+use Drupal\taxonomy\Entity\Term;
 use Drupal\views\ViewExecutable;
 use Drupal\dm_project\ProjectHelper;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 
 define('DM_PROJECT_CORE_MODULE_TID', 11);
 
 /**
+ * Implements hook_views_post_render() 当打开home?category页面的时候修改页面title.
+ *
+ * @param \Drupal\views\ViewExecutable $view
+ */
+function dm_project_views_post_render(ViewExecutable $view) {
+  if($view->id() == 'home' && $view->current_display == 'home_page' && isset($_GET['category']) && $_GET['category'] != 'All') {
+    $version = 'Drupal ';
+    if (isset($_GET['version']) && $_GET['version'] != 'All') {
+      $version = ProjectHelper::LoadVersion($_GET['version']) . ' ';
+    }
+
+    $term = Term::load($_GET['category']);
+    $title = $version . $term->getName() . '模块';
+    $view->setTitle($title);
+    $route = \Drupal::routeMatch()->getCurrentRouteMatch()->getRouteObject();
+    $route->setDefault('_title', $title);
+  }
+}
+
+/**
+ * Implements hook_views_query_alter() 对搜索结果进行排序.
+ *
  * @param \Drupal\views\ViewExecutable                     $view
  * @param \Drupal\views\Plugin\views\query\QueryPluginBase $query
  */

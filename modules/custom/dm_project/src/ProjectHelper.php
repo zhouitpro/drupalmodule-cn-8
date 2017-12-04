@@ -2,6 +2,8 @@
 
 namespace Drupal\dm_project;
 
+use Drupal\field\Entity\FieldStorageConfig;
+
 class ProjectHelper {
 
   /**
@@ -23,6 +25,23 @@ class ProjectHelper {
   public static function IsCoreModuleByCategory($category) {
     $cateids = array_column($category, 'target_id');
     return in_array(11, $cateids);
+  }
+
+  /**
+   * Load version
+   *
+   * @param string $version
+   *
+   * @return mixed
+   */
+  function LoadVersion($version = '') {
+
+    $allowed_versions = FieldStorageConfig::loadByName('node', 'field_module_version')
+      ->getSetting('allowed_values');
+    if ($version && isset($allowed_versions[$version])) {
+      return $allowed_versions[$version];
+    }
+    return $allowed_versions;
   }
 
   /**
