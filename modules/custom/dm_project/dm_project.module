@@ -17,17 +17,25 @@ define('DM_PROJECT_CORE_MODULE_TID', 11);
  * @param \Drupal\views\ViewExecutable $view
  */
 function dm_project_views_post_render(ViewExecutable $view) {
-  if($view->id() == 'home' && $view->current_display == 'home_page' && isset($_GET['category']) && $_GET['category'] != 'All') {
-    $version = 'Drupal ';
+  if($view->id() == 'home' && $view->current_display == 'home_page') {
+    $titleString = '';
+
     if (isset($_GET['version']) && $_GET['version'] != 'All') {
-      $version = ProjectHelper::LoadVersion($_GET['version']) . ' ';
+      $titleString = ProjectHelper::LoadVersion($_GET['version']) . ' ';
     }
 
-    $term = Term::load($_GET['category']);
-    $title = $version . $term->getName() . '模块';
-    $view->setTitle($title);
-    $route = \Drupal::routeMatch()->getCurrentRouteMatch()->getRouteObject();
-    $route->setDefault('_title', $title);
+    if(isset($_GET['category']) && $_GET['category'] != 'All') {
+      $term = Term::load($_GET['category']);
+      $titleString .= $term->getName();
+    }
+
+    if($titleString) {
+
+      $titleString .= ' 模块';
+      $view->setTitle($titleString);
+      $route = \Drupal::routeMatch()->getCurrentRouteMatch()->getRouteObject();
+      $route->setDefault('_title', $titleString);
+    }
   }
 }
 
