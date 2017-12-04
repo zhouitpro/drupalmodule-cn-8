@@ -26,12 +26,13 @@ function dm_project_views_post_render(ViewExecutable $view) {
 
     if(isset($_GET['category']) && $_GET['category'] != 'All') {
       $term = Term::load($_GET['category']);
+      $titleString = $titleString ? $titleString : 'Drupal ';
       $titleString .= $term->getName();
     }
 
     if($titleString) {
 
-      $titleString .= ' 模块';
+      $titleString .= '模块';
       $view->setTitle($titleString);
       $route = \Drupal::routeMatch()->getCurrentRouteMatch()->getRouteObject();
       $route->setDefault('_title', $titleString);
