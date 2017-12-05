@@ -29,6 +29,9 @@ class DmApiController extends ControllerBase {
       $top_rows = array();
       $button_rows = array();
       foreach ($release_info['releases'] as $ver => $release) {
+        if (!$release['download_link']) {
+          continue;
+        }
         $public = array();
         $public[] = format_size($release['filesize']);
         $public[] = date('Y-m-d', $release['date']);
