@@ -29,7 +29,7 @@ class RightMenuBlock extends BlockBase {
   public function load_tags($source_html) {
     $dom = new \DomDocument();
     $meta = '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">';
-    $dom->loadHTML($meta . $source_html);
+    @$dom->loadHTML($meta . $source_html);
     $xpath = new \DomXPath($dom);
     $doms = $xpath->query("//h2|//h3");
     $tags = [];
