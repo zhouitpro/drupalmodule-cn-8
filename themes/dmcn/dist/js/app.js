@@ -30,4 +30,12 @@
                 });
             }}
     });
+
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?60ba0b65006b230e5a958599ab64eecf";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
 })(jQuery, Drupal);
