@@ -93,11 +93,12 @@ function dm_project_views_query_alter(ViewExecutable $view, QueryPluginBase $que
   if($view->id() == 'home' && $view->current_display == 'block_1') {
     $node = \Drupal::routeMatch()->getParameter('node');
 
-    $category = [];
-    foreach($node->get('field_module_category')->getValue() as $node_category) {
-      $category[] = $node_category['target_id'];
-    }
-    if ($node instanceof NodeInterface) {
+    if ($node && $node instanceof NodeInterface) {
+      $category = [];
+      foreach($node->get('field_module_category')->getValue() as $node_category) {
+        $category[] = $node_category['target_id'];
+      }
+
       $condition_wheres = &$query->where;
       foreach($condition_wheres as &$condition_where) {
         foreach($condition_where['conditions'] as &$condition) {
