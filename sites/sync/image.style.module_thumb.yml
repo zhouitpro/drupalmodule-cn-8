@@ -1,14 +1,14 @@
-uuid: 825562a8-f7fd-4d5d-90dc-80fd8907ac32
+uuid: f7c1ca31-512c-4176-96ae-106fba39828a
 langcode: zh-hans
 status: true
 dependencies: {  }
 name: module_thumb
 label: 'Module Thumb'
 effects:
-  0f8bf76b-10a8-4d62-a734-a5fef48284e1:
-    uuid: 0f8bf76b-10a8-4d62-a734-a5fef48284e1
+  e082bfde-ed97-4e93-9e84-d8fcf74ec925:
+    uuid: e082bfde-ed97-4e93-9e84-d8fcf74ec925
     id: image_scale
-    weight: 2
+    weight: 1
     data:
       width: 220
       height: null

@@ -13,7 +13,6 @@ dependencies:
     - field.field.node.project.field_module_page
     - field.field.node.project.field_module_short_name
     - field.field.node.project.field_module_version
-    - image.style.thumbnail
     - node.type.project
   module:
     - file
@@ -61,7 +60,7 @@ content:
     weight: 3
     settings:
       progress_indicator: throbber
-      preview_image_style: thumbnail
+      preview_image_style: ''
     third_party_settings: {  }
     type: image_image
     region: content
