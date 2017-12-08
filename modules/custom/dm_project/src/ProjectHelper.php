@@ -34,7 +34,7 @@ class ProjectHelper {
    *
    * @return mixed
    */
-  function LoadVersion($version = '') {
+  public static function LoadVersion($version = '') {
 
     $allowed_versions = FieldStorageConfig::loadByName('node', 'field_module_version')
       ->getSetting('allowed_values');
@@ -49,7 +49,7 @@ class ProjectHelper {
    *
    * @return array
    */
-  function AddIdToH2H3Tags($html, $entity) {
+  public static function AddIdToH2H3Tags($html, $entity) {
     // header('content-type:text/html;charset=utf-8');
     $dom = new \DOMDocument();
     $meta = '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">';
