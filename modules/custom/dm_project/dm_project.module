@@ -188,7 +188,7 @@ function dm_project_entity_presave(EntityInterface $entity) {
  * @param                                                        $view_mode
  */
 function dm_project_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
-  if($build['#entity_type'] == 'node' && $build['#node']->getType() == 'project') {
+  if(isset($build['#entity_type']) && $build['#entity_type'] == 'node' && $build['#node']->getType() == 'project') {
     $build['#attached']['drupalSettings']['dm_project'] = array(
       'is_core_module' => ProjectHelper::IsCoreModule($entity),
       'project_id' => $entity->id(),
@@ -197,4 +197,3 @@ function dm_project_entity_view(array &$build, EntityInterface $entity, EntityVi
     );
   }
 }
-
